@@ -1,7 +1,6 @@
 
 /**
  * Define all your API web-routes
- *
  */
 import { Express } from "express";
 import { Router } from "express";
