@@ -4,14 +4,21 @@
 
 import { Application } from "express";
 
-import apiRouter from "./../routes/Api";
+import boardsRouter from "./../routes/board-routes";
+import { provideBoardsService } from '../services/boards-service';
 
 class Routes {
 
-    public mountApi(express: Application): Application {
-        const apiPrefix = "api";
+    public init(app: Application): Application {
+        this.mountBoards(app);
 
-        return express.use(`/${apiPrefix}`, apiRouter);
+        return app;
+    }
+
+    public mountBoards(express: Application): Application {
+        const boardsPrefix = "boards";
+
+        return express.use(`/${boardsPrefix}`, provideBoardsService, boardsRouter);
     }
 }
 

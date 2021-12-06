@@ -5,12 +5,15 @@
 import * as path from "path";
 
 import Express from "./Express";
+
+import { Application } from "express";
+import bodyParser from "body-parser";
+
 class App {
+    application: Application;
 
-    // Loads your Server
     public loadServer(): void {
-
-        Express.init();
+        this.application = Express.init();
     }
 }
 
