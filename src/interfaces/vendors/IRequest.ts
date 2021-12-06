@@ -6,10 +6,10 @@ import { Request } from "express";
 import { IProvidedService } from "../services/provided-service.interface";
 
 export interface IRequest extends Request {
+    service?: IProvidedService;
     flash(message: string, callback: any): any;
 
     logIn(user: any, callback: any): any;
     user(): any;
     logout(): void;
-    service?: IProvidedService;
 }

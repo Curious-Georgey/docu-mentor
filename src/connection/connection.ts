@@ -10,8 +10,8 @@ export const connection = createConnection({
     database: "documentor-core",
     entities: [
         Board,
-        BoardBlock
+        BoardBlock,
     ],
     synchronize: true,
-    logging: false
+    logging: false,
 });

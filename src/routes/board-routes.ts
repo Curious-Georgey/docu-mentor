@@ -8,7 +8,9 @@ import BoardsController from "../controllers/boards.controller";
 
 const router = Router()
                 .get("/", BoardsController.getAll)
-                .get("/:id", BoardsController.getById) 
-                .post("/", BoardsController.create);
+                .get("/:id", BoardsController.getById)
+                .post("/", BoardsController.create)
+                .delete("/:id", BoardsController.remove)
+                .put("/:id", BoardsController.update);
 
 export default router;

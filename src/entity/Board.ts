@@ -1,18 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { BoardBlock } from "./BoardBlock";
 
 @Entity()
 export class Board {
 
     @PrimaryGeneratedColumn("uuid")
-    id: string;
+    public id: string;
 
     @Column("text")
-    userId: string;
+    public userId: string;
 
     @Column("text")
-    title: string;
+    public title: string;
 
     @OneToMany((type) => BoardBlock, (block) => block.board)
-    blocks: BoardBlock[];
+    public blocks: BoardBlock[];
 }
