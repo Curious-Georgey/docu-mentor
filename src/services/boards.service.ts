@@ -3,19 +3,18 @@ import { IRequest } from "../interfaces/vendors";
 
 import { Response } from "express";
 import { BoardsStorage } from "../storages/boards.storage";
-import { IBoardsStorage } from "../interfaces/storages/boards-storage.interface";
 import { Board } from "../entity/Board";
 
 class BoardsService implements IBoardsService {
 
-    
+
     public getAll(): Promise<Board[] | Error> {
         console.log('BoardsService::getAll');
         try {
             const result = BoardsStorage.getAll();
             return result;
         }
-        catch(err) {
+        catch (err) {
             console.log(err)
             return err;
         }
@@ -27,19 +26,19 @@ class BoardsService implements IBoardsService {
             const result = BoardsStorage.getById(id);
             return result;
         }
-        catch(err) {
+        catch (err) {
             console.log(err)
             return err;
         }
     }
 
-    public create(title: string, userId: string): Promise<Board | Error> {
+    public create(title: string, refId: string): Promise<Board | Error> {
         console.log('BoardsService::create');
         try {
-            const result = BoardsStorage.create(title, userId);
+            const result = BoardsStorage.create(title, refId);
             return result;
         }
-        catch(err) {
+        catch (err) {
             console.log(err)
             return err;
         }
@@ -51,7 +50,7 @@ class BoardsService implements IBoardsService {
             const result = BoardsStorage.remove(id);
             return result;
         }
-        catch(err) {
+        catch (err) {
             console.log(err)
             return err;
         }
@@ -63,7 +62,7 @@ class BoardsService implements IBoardsService {
             const result = BoardsStorage.update(id, body);
             return result;
         }
-        catch(err) {
+        catch (err) {
             console.log(err)
             return err;
         }

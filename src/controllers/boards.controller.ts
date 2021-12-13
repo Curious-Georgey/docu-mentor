@@ -1,5 +1,5 @@
 /**
- * Handler for Home
+ * Handler for Boards
  */
 
 import { Response } from "express";

@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { BoardBlock } from "./BoardBlock";
+import { Task } from "./Task";
 
 @Entity()
 export class Board {
@@ -8,11 +8,14 @@ export class Board {
     public id: string;
 
     @Column("text")
-    public userId: string;
+    public refId: string;
 
     @Column("text")
     public title: string;
 
-    @OneToMany((type) => BoardBlock, (block) => block.board)
-    public blocks: BoardBlock[];
+    @Column("text")
+    public createdAt: string;
+
+    @OneToMany((type) => Task, (task) => task.board)
+    public tasks: Task[];
 }

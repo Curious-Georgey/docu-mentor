@@ -1,6 +1,6 @@
 import { createConnection } from "typeorm";
 import { Board } from "../entity/Board";
-import { BoardBlock } from "../entity/BoardBlock";
+import { Task } from "../entity/Task";
 export const connection = createConnection({
     type: "mysql",
     host: "localhost",
@@ -10,7 +10,7 @@ export const connection = createConnection({
     database: "documentor-core",
     entities: [
         Board,
-        BoardBlock,
+        Task
     ],
     synchronize: true,
     logging: false,

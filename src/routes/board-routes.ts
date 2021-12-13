@@ -5,6 +5,7 @@
 
 import { Router } from "express";
 import BoardsController from "../controllers/boards.controller";
+import TasksController from "../controllers/tasks.controller";
 
 const router = Router()
                 .get("/", BoardsController.getAll)

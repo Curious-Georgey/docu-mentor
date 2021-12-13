@@ -1,5 +1,4 @@
 import { Board } from "../../entity/Board";
-import { IBoardsStorage } from "../storages/boards-storage.interface";
 import { IProvidedService } from "./provided-service.interface";
 
 export interface IBoardsService extends IProvidedService {

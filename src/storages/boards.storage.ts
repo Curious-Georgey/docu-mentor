@@ -1,6 +1,5 @@
 import { connection } from "../connection/Connection";
 import { Board } from "../entity/Board";
-import { IBoardsStorage } from "../interfaces/storages/boards-storage.interface";
 
 export class BoardsStorage {
     static getAll = async (): Promise<Board[] | Error> => {
@@ -27,14 +26,15 @@ export class BoardsStorage {
                 return new Error(JSON.stringify(error));
             });
     }
-    static create = async (title: string, userId: string): Promise<Board | Error> => {
+    static create = async (title: string, refId: string): Promise<Board | Error> => {
         console.log('BoardsStorage::create')
         return await connection
             .then(async (connection) => {
                 const boardToCreate: Board = new Board();
                 boardToCreate.title = title;
-                boardToCreate.userId = userId;
-                boardToCreate.blocks = [];
+                boardToCreate.refId = refId;
+                boardToCreate.createdAt = new Date().toISOString();
+                boardToCreate.tasks = [];
                 const response = await connection.manager.save(boardToCreate);
                 return response;
             })
@@ -55,6 +55,7 @@ export class BoardsStorage {
                         return new Error(JSON.stringify(error));
                     });
     }
+    
     static update = async (id: string, body: Object): Promise<Board | Error> => {
         console.log('BoardsStorage::update')
         return await connection
